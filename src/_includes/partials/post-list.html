@@ -1,0 +1,14 @@
+<div>
+  {% if postListHeadline %}
+  <h2>{{ postListHeadline }}</h2>
+  {% endif %}
+  <div>
+    <ol>
+      {% for item in postListItems %}
+      <li>
+        <h href="{{ item.url }}">{{ item.data.title }}</h>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+:root {
+	--link: #47C2FF;
+	--link-hover: #50D7A4;
+	--header-color: #a6a6a6;
+	--background: #eee;
+	--color: #111;
+}
+
+html {
+	box-sizing: border-box;
+	height: 100%;
+}
+
+body {
+	/* --background: #ddd; */
+	/* --color: #111; */
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1em;
+	background-color: var(--background);
+	color: var(--color);
+	transition: 0.3s;
+}
+
+@media screen and (min-width: 800px) {
+	body {
+		font-size: 1.2em;
+	}
+}
+
+svg {
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--header-color);
+}
+
+a {
+	text-decoration: none;
+	color: var(--link);
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+a:hover {
+	color: var(--link);
+	transition: 0.3s;
+}
+
+@media screen and (min-width: 800px) {
+	a:hover {
+		color: var(--link-hover);
+		transition: 0.3s;
+	}
+}
+
+pre {
+	white-space: pre-wrap;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+code {
+	font-family: menlo, inconsolata, monospace;
+	font-size: calc(1em - 2px);
+	padding: 0.2em 0.4em;
+	border-radius: 2px;
+}
+
+.one, .one-third, .two-thirds, .one-fourth, .half, .three-fourths {
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .one {
+    width: 100%;
+  }
+
+  .one-third {
+    width: calc(100% / 3);
+  }
+
+  .two-thirds {
+    width: calc(100% / 3 * 2);
+  }
+
+  .one-fourth {
+    width: calc(100% / 4);
+  }
+
+  .half {
+    width: calc(100% / 2);
+  }
+
+  .three-fourths {
+    width: calc(100% / 4 * 3);
+  }
+
+  .column {
+    float: left;
+  }
+}

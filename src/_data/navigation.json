@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "text": "Home",
+      "url": "/",
+      "icon": "/static/feather-sprite.svg#home"
+    },
+    {
+      "text": "Blog",
+      "url": "/blog/",
+      "icon": "/static/feather-sprite.svg#book-open"
+    },
+    {
+      "text": "Projects",
+      "url": "/projects/",
+      "icon": "/static/feather-sprite.svg#folder"
+    },
+    {
+      "text": "About",
+      "url": "/about/",
+      "icon": "/static/feather-sprite.svg#info"
+    }
+  ]
+}

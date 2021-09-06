@@ -1,0 +1,33 @@
+<div class="navigation">
+  <nav>
+    <ul>
+      {% for item in navigation.items %}
+      <li>
+        <a href="{{ item.url }}">
+          <span class="desktop-nav">{{ item.text }}</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="{{ item.icon}}"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      {% endfor %}
+      <li>
+        <a href="">
+          <span class="desktop-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+          </span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="divider"></div>
+</div>
