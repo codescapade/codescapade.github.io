@@ -24,8 +24,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
   background-color: var(--background-color);
-  color: var(--color);
-  transition: 0.3s;
+  color: var(--text-color);
+  /* transition: 0.3s; */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,7 +63,9 @@ main {
 
 .title-img {
   display: block;
-  margin: 30px auto;
+  margin: 10px auto;
+  min-height: 80px;
+  object-fit: contain;
 }
 
 code {
@@ -78,6 +80,11 @@ code {
 		color: var(--link-hover);
 		transition: 0.3s;
 	}
+
+  .title-img {
+    margin: 30px auto;
+    min-height: 180px;
+  }
 }
 
 @media (min-width: 800px) {
@@ -134,7 +141,7 @@ nav ul li a {
 }
 
 .blog-item, .dropdown-list {
-  background: var(--background);
+  background: var(--background-color);
   padding: 2px 12px;
 }
 
@@ -158,12 +165,11 @@ nav ul li a {
 }
 
 .navigation {
-  background-color: var(--background);
+  background-color: var(--background-color);
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
-  transition: 0.3s;
-  z-index: 5;
+  z-index: 10000;
 }
 
 @media (min-width: 800px) {
@@ -203,4 +209,8 @@ nav ul li a {
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
+}
+
+.sun-icon {
+  display: none;
 }

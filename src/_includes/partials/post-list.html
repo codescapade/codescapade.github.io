@@ -6,7 +6,7 @@
     <ol>
       {% for item in postListItems %}
       <li>
-        <h href="{{ item.url }}">{{ item.data.title }}</h>
+        <a href="{{ item.url }}">{{ item.data.title }}</a>
       </li>
       {% endfor %}
     </ol>

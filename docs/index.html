@@ -11,6 +11,7 @@
     <title></title>
   </head>
   <body>
+    <script src="/static/theme.js"></script>
     <div class="container">
       <image class="title-img" src="/static/title.png"/>
       <div class="navigation">
@@ -62,15 +63,21 @@
       </li>
       
       <li>
-        <a href="">
+        <a href="javascript:void(0)" onclick="toggleTheme()">
           <span class="desktop-nav">
-            <svg class="feather">
+            <svg class="feather moon-icon">
               <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
             </svg>
           </span>
           <span class="mobile-nav">
-            <svg class="feather">
+            <svg class="feather moon-icon">
               <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
             </svg>
           </span>
         </a>
