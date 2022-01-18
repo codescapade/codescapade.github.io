@@ -26,8 +26,8 @@ function setTheme(theme) {
     }
   }
   localStorage.setItem('theme', theme);
+  console.log('test');
 }
 
 let theme = localStorage.getItem('theme') || 'light';
-document.body.className = `${theme}-theme`; 
 setTheme(theme);

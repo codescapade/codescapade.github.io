@@ -7,6 +7,9 @@
       {% for item in postListItems %}
       <li>
         <a href="{{ item.url }}">{{ item.data.title }}</a>
+        <div class="post-date">{{ item.data.page.date | date }}</div>
+        <p>{{ item.data.page.excerpt }}</p>
+        <a href="{{ item.url }}">Read More</a>
       </li>
       {% endfor %}
     </ol>

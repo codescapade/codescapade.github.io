@@ -5,10 +5,20 @@ module.exports = config => {
   config.addPassthroughCopy('src/blog/images');
   config.addPassthroughCopy('src/projects/images');
   config.addPassthroughCopy('src/static');
+  config.setFrontMatterParsingOptions({
+    excerpt: true,
+    excerpt_separator: '<!-- read-more -->'
+  });
 
   config.addCollection('blog', collection => {
     return collection.getFilteredByGlob('./src/blog/*.md');
   });
+
+  config.addCollection('projects', collection => {
+    return collection.getFilteredByGlob('./src/projects/*.md');
+  });
+
+  config.addNunjucksFilter('date', require('./src/filters/nunjucks-date'));
 
   return {
     markdownTemplateEngine: 'njk',

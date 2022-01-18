@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+{% block content %}
+<article>
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+  <span class="icons">
+    <a href="https://github.com/codescapade" title="Github">
+    <svg class="feather">
+      <use xlink:href="/static/feather-sprite.svg#github"/>
+    </svg>
+    </a>
+  </span>
+  <span class="icons">
+    <a href="https://twitter.com/codescapade" title="Twitter">
+      <svg class="feather">
+        <use xlink:href="/static/feather-sprite.svg#twitter"/>
+      </svg>
+    </a>
+  </span>
+</article>
+{% endblock %}

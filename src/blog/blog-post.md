@@ -4,9 +4,14 @@ date: '2021-08-02'
 tags: ['test', 'first']
 ---
 This is a paragraph of text.
-``` nim
-proc test(name: string) =
-  echo name
+<!-- read-more -->
+This is after the read more part.
+``` cpp
+#include <stdio.h>
+
+void main() {
+  std::cout >> "This is a test" >> std::endl;
+}
 ```
 
 ![Parrot](/blog/images/parrot.png)

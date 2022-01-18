@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+	  <link rel='icon' type='image/png' href='/static/favicon.png'>
+    <title>About me</title>
+  </head>
+  <body>
+    <div class="container">
+      <image class="title-img" src="/static/title.png"/>
+      <div class="navigation">
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/">
+          <span class="desktop-nav">Home</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#home"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/">
+          <span class="desktop-nav">Blog</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#book-open"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/projects/">
+          <span class="desktop-nav">Projects</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#folder"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about/">
+          <span class="desktop-nav">About</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#info"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="javascript:void(0)" onclick="toggleTheme()">
+          <span class="desktop-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+          <span class="mobile-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="divider"></div>
+</div>
+      <main tabindex="-1">
+        
+<article>
+  <h1>About me</h1>
+  <p>Hi I'm Juriën, a software / game developer. I’ve been working as a full stack developer for the past 4 years.
+In my current role we use C# on the frontend and Python on the backend.</p>
+<p>In my spare time I create small games using all kinds of engines and frameworks from <a href="https://unity.com">Unity</a>
+to <a href="http://haxeflixel.com">Haxeflixel</a>. I think I tried them all at this point. At the moment I’m using <a href="https://github.com/Kode/Kinc">Kinc</a> to try and build my own game engine.</p>
+<p>I’m using this site as a portfolio for my games and projects and to blog
+about software and game development.<br>
+You can contact me at <strong>codescapade [at] gmail [dot] com</strong>.</p>
+
+  <span class="icons">
+    <a href="https://github.com/codescapade" title="Github">
+    <svg class="feather">
+      <use xlink:href="/static/feather-sprite.svg#github"/>
+    </svg>
+    </a>
+  </span>
+  <span class="icons">
+    <a href="https://twitter.com/codescapade" title="Twitter">
+      <svg class="feather">
+        <use xlink:href="/static/feather-sprite.svg#twitter"/>
+      </svg>
+    </a>
+  </span>
+</article>
+
+      </main>
+    </div>
+    <script src="/static/theme.js"></script>
+  </body>
+</html>
