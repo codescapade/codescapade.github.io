@@ -1,0 +1,12 @@
+{% extends "layouts/base.html" %}
+
+{% set pageTitle = title %}
+{% set pageSummary = content %}
+{% set projectList = collections.projects %}
+
+{% block content %}
+  <article>
+    {% include "partials/page-header.html" %}
+    {% include "partials/project-list.html" %}
+  </article>
+{% endblock %}

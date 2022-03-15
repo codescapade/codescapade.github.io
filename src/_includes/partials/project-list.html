@@ -1,0 +1,14 @@
+<div>
+  {% for project in projectList %}
+  <div class="column one-third project-item">
+    <a href="{{ project.url }}">
+      <div class="project-container">
+        <h2>{{ project.data.title }}</h2>
+        <h4>{{ project.data.description }}</h4>
+        <img class="project-image" src="{{ project.data.cover }}"/>
+      </div>
+      <div class="project-list-border"></div>
+    </a>
+  </div>
+  {% endfor %}
+</div>

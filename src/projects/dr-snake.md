@@ -2,11 +2,10 @@
 title: Dr. Snake
 releaseDate: 2018-04-24
 weight: 2
-cover: games-static/dr-snake/cover.png
+cover: /projects/images//dr-snake/cover.png
+description: Small puzzle game for Ludum Dare 41.
 draft: false
 ---
-
-
 
 I created Dr. Snake for Ludum Dare 41 in 48 hours. The theme was **Combine 2 Incompatible Genres**. I decided to combine snake, a topdown game with Dr. Mario, a game you look at from the side with gravity. The goal of the game is to remove all circles from the level by matching 3 or more snake body parts of the same color horizontally or vertically with the circle of that color.
 

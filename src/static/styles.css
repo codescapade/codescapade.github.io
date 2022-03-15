@@ -4,7 +4,7 @@
 }
 
 body {
-	--header-color: #a6a6a6;
+	--header-color: #666;
 	--background-color: #eee;
 	--text-color: #111;
 }
@@ -217,4 +217,26 @@ nav ul li a {
 
 .icons {
   padding: 5px 10px;
+}
+
+.project-item {
+  margin-bottom: 50px;
+}
+
+.project-image {
+  width: 200px;
+  height: 200px;
+}
+
+.project-list-border {
+  border-bottom: 3px solid var(--link);
+  display: block;
+  height: 3px;
+  margin: 10px auto;
+  width: 240px;
+}
+
+.project-container {
+  padding: 0 20px;
+  text-align: center;
 }

@@ -13,12 +13,12 @@ function setTheme(theme) {
     }
 
     for (let moon of moons) {
-      moon.style.display = 'block';
+      moon.style.display = 'inline-block';
     }
   } else {
     document.body.className = 'dark-theme';
     for (let sun of suns) {
-      sun.style.display = 'block';
+      sun.style.display = 'inline-block';
     }
 
     for (let moon of moons) {
