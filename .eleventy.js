@@ -1,6 +1,15 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const slugify = require("slugify");
+const dateFilter = require('./src/filters/nunjucks-date');
+const slugFilter = require('./src/filters/slugify');
+const markdownIt = require('markdown-it');
 
+const MARKDOWN_OPTIONS = {
+    html: true,
+    breaks: false,
+    linkify: true
+};
+
+let markdownLibrary = markdownIt(MARKDOWN_OPTIONS);
 module.exports = config => {
   config.addPlugin(syntaxHighlight);
   config.addPassthroughCopy('src/blog/images');
@@ -10,6 +19,8 @@ module.exports = config => {
     excerpt: true,
     excerpt_separator: '<!-- read-more -->'
   });
+
+  config.setLibrary("md", markdownLibrary);
 
   config.addCollection('blog', collection => {
     return collection
@@ -29,17 +40,11 @@ module.exports = config => {
       });
   });
 
-  config.addNunjucksFilter('date', require('./src/filters/nunjucks-date'));
+  config.addNunjucksFilter('date', dateFilter);
+  config.addFilter("slugify", slugFilter);
 
-  config.addFilter("slugify", (input) => {
-    const options = {
-      replacement: "-",
-      remove: /[&,+()$~%.'":*?<>{}]/g,
-      lower: true
-    };
-    console.log('this is running');
-    console.log(slugify(input, options));
-    return slugify(input, options);
+  config.addFilter("toHTML", (str) => {
+    return new markdownIt(MARKDOWN_OPTIONS).renderInline(str);
   });
 
   return {

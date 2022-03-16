@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+	  <link rel='icon' type='image/png' href='/static/favicon.png'>
+    <title>Dr. Snake</title>
+  </head>
+  <body>
+    <div class="container">
+      <image class="title-img" src="/static/title.png"/>
+      <div class="navigation">
+  <nav>
+    <ul>
+      
+      <li>
+        <a href="/">
+          <span class="desktop-nav">Home</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#home"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/">
+          <span class="desktop-nav">Blog</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#book-open"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/projects/">
+          <span class="desktop-nav">Projects</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#folder"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/about/">
+          <span class="desktop-nav">About</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#info"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="javascript:void(0)" onclick="toggleTheme()">
+          <span class="desktop-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+          <span class="mobile-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="divider"></div>
+</div>
+      <main tabindex="-1">
+        
+  <article>
+    <h1>Dr. Snake</h1>
+    <h4>Release Date: 2018-04-24</h4>
+    <p>I created Dr. Snake for Ludum Dare 41 in 48 hours. The theme was <strong>Combine 2 Incompatible Genres</strong>. I decided to combine snake, a topdown game with Dr. Mario, a game you look at from the side with gravity. The goal of the game is to remove all circles from the level by matching 3 or more snake body parts of the same color horizontally or vertically with the circle of that color.</p>
+<p>While the snake moves it works as a top down game, you can go in any direction. As soon as you hit something the snake keeps it shape and falls down like in Dr. Mario and stops when any of the parts hit something. If you match 4 or more of the same color those parts get removed. If this breaks the snake it breaks into separate parts that fall independently. You can play it <a href="https://codescapade.github.io/LD41/">here</a>.</p>
+<p><img src="/projects/images/dr-snake/screenshot-1.png" alt="screenshot-1"></p>
+<h3>Development</h3>
+<p>I used <a href="https://phaser.io/download/phaserce">Phaser CE</a> with TypeScript as framework for this game. Phaser is very easy to use and fast to prototype with. I use TypeScript at work so this was very useful to create a game in a small amount of time. Since it is a web framework it is easy to make your game available for people to play and judge.</p>
+<p>I might create a full game out of this at a later point. Seems it could be a fun mobile game. I would probably switch to a different framework then because WebGL is not a great option for mobile.</p>
+<p><img src="/projects/images/dr-snake/screenshot-2.png" alt="screenshot-2"></p>
+
+  </article>
+
+      </main>
+    </div>
+    <script src="/static/theme.js"></script>
+  </body>
+</html>

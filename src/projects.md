@@ -4,4 +4,4 @@ layout: 'layouts/projects.html'
 permalink: 'projects/index.html'
 ---
 
-This is the projects page. Here I post projects I have completed or am working on.
+Here is a list with some of the project i created.

@@ -223,6 +223,10 @@ nav ul li a {
   margin-bottom: 50px;
 }
 
+.blog-list {
+  padding-top: 30px;
+}
+
 .project-image {
   width: 200px;
   height: 200px;
@@ -236,7 +240,28 @@ nav ul li a {
   width: 240px;
 }
 
+.post-list-border {
+  border-bottom: 3px solid var(--link);
+  display: block;
+  height: 3px;
+  width: 100%;
+  margin: 10px 0px 50px 0px;
+}
+
 .project-container {
   padding: 0 20px;
   text-align: center;
+}
+
+.read-more {
+  padding-top: 5px;
+}
+
+.post-date {
+  font-size: smaller;
+  padding-bottom: 10px;
+}
+
+.excerpt {
+  padding-bottom: 10px;
 }

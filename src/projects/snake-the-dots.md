@@ -1,9 +1,9 @@
 ---
 title: Snake The Dots
-releaseDate: 2019-12-10
+released: 2019-12-10
 weight: 4
 cover: /projects/images/snake-the-dots/cover.png
-description: Procedural arcade snake game for iOS.
+description: A procedural arcade snake game for iOS.
 draft: false
 ---
 
