@@ -6,7 +6,7 @@
 
 {% if tag %}
   {% set postList = collections[tag] %}
-  {% set pageTitle = 'Posts with "' + tag + '"' %}
+  {% set pageTitle = 'Blog posts tagged with "#' + tag + '"' %}
 {%endif %}
 
 {% block content %}
@@ -14,6 +14,9 @@
     {% include "partials/page-header.html" %}
     {% include "partials/post-list.html" %}
 
+    {% if tag %}
+    <a href="/tags">#all tags</a>
+    {% endif %}
     {# If we leave pagination in for tags, the next and prev links will
       link to tags and be rather confusing, so don't render in that situation #}
     {% if not tag %}

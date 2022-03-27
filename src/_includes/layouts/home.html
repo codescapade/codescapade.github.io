@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% set projectList = collections.projects %}
+{% set postList = collections.blog %}
+
+{% block content %}
+<article>
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+  <div class="home-updates">
+    <div>
+      {% for post in postList | head(-1) %}
+        <a href="{{ pos.url }}"><h2 class="link-header">Latest Blog Post</h2></a>
+        <div class="post-item">
+          <a href="{{ post.url }}"><h3>{{ post.data.title }}</h3></a>
+          <div class="post-date">{{ post.data.page.date | date }}</div>
+          <div class="excerpt">{{ post.data.page.excerpt | toHTML | safe }}</div>
+          <a class="read-more" href="{{ post.url }}">Read More</a>
+          <div class="post-list-border"></div>
+        </div>
+      {% endfor %}
+    </div>
+    <div>
+      {% for project in projectList | reverse | head(-1) %}
+        <a href="{{ project.url }}"><h2 class="link-header">Latest Project</h2></a>
+        <div>
+          <div class="project-text-home">
+            <a href="{{ project.url }}">
+              <h3>{{ project.data.title }}</h3>
+            </a>
+            <div class="">{{ project.data.description }}</div>
+            <a class="read-more" href="{{ project.url }}">Read More</a>
+          </div>
+          <img class="project-image project-image-home" src="{{ project.data.cover }}"/>
+        </div>
+        <div class="post-list-border"></div>
+      {% endfor %}
+    </div>
+  </div>
+</article>
+{% endblock %}

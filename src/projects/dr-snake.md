@@ -3,7 +3,7 @@ title: Dr. Snake
 released: 2018-04-24
 weight: 2
 cover: /projects/images//dr-snake/cover.png
-description: A small puzzle game for Ludum Dare 41.
+description: A small puzzle game combining snake and Dr. Mario for Ludum Dare 41.
 draft: false
 ---
 

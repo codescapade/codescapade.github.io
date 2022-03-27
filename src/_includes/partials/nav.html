@@ -3,7 +3,7 @@
     <ul>
       {% for item in navigation.items %}
       <li>
-        <a href="{{ item.url }}">
+        <a class="{{ 'active' if item.url == page.url or (item.url != '/' and item.url in page.url) }}" href="{{ item.url }}">
           <span class="desktop-nav">{{ item.text }}</span>
           <span class="mobile-nav">
             <svg class="feather">

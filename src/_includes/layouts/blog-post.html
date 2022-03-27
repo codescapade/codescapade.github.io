@@ -3,5 +3,8 @@
   <article>
     <h1>{{ title }}</h1>
     {{ content | safe }}
+    {% for tag in tags -%}
+        <a class="tag" href="/tags/{{ tag }}">#{{ tag }}</a>
+    {%- endfor %}
   </article>
 {% endblock %}

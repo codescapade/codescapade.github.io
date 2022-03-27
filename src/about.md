@@ -1,6 +1,6 @@
 ---
-layout: 'layouts/about.html'
-title: 'About me'
+layout: layouts/about.html
+title: About me
 ---
 
 Hi I'm Juriën, a software / game developer. I’ve been working as a full stack developer for the past 4 years.

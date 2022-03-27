@@ -1,7 +1,7 @@
 ---
-title: 'Projects'
-layout: 'layouts/projects.html'
-permalink: 'projects/index.html'
+title: Projects
+layout: layouts/projects.html
+permalink: projects/index.html
 ---
 
-Here is a list with some of the project i created.
+Here is a list with some of the project I created.

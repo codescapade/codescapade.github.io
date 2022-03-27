@@ -1,6 +1,5 @@
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const dateFilter = require('./src/filters/nunjucks-date');
-const slugFilter = require('./src/filters/slugify');
 const markdownIt = require('markdown-it');
 
 const MARKDOWN_OPTIONS = {
@@ -22,7 +21,7 @@ module.exports = config => {
 
   config.setLibrary("md", markdownLibrary);
 
-  config.addCollection('blog', collection => {
+  config.addCollection('blog', (collection) => {
     return collection
       .getFilteredByGlob('./src/blog/*.md')
       .filter((post) => {
@@ -30,7 +29,7 @@ module.exports = config => {
       });
   });
 
-  config.addCollection('projects', collection => {
+  config.addCollection('projects', (collection) => {
     return collection.getFilteredByGlob('./src/projects/*.md')
       .filter((project) => {
         return !project.data.draft;
@@ -40,12 +39,35 @@ module.exports = config => {
       });
   });
 
+  // Create an array of all tags
+  config.addCollection('tagList', (collection) => {
+    let tagList = []
+    collection.getAll().forEach((item) => {
+      if (item.data.tags && item.data.tags.length > 0) {
+        for (tag of item.data.tags) {
+          if (tagList.indexOf(tag) == -1) {
+            tagList.push(tag);
+          }
+        }
+      }
+    });
+
+    return tagList;
+  });
+
   config.addNunjucksFilter('date', dateFilter);
-  config.addFilter("slugify", slugFilter);
 
   config.addFilter("toHTML", (str) => {
     return new markdownIt(MARKDOWN_OPTIONS).renderInline(str);
   });
+
+  config.addFilter("head", (array, n) => {
+    if( n < 0 ) {
+      return array.slice(n);
+    }
+    
+    return array.slice(0, n);
+  }); 
 
   return {
     markdownTemplateEngine: 'njk',

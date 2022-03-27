@@ -1,0 +1,13 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<article>
+  <h1>{{ title }}</h1>
+  {{ content | safe }}
+  {% for tag in collections.tagList | sort %}
+  <div class="column one-third all-tag">
+    <a href="{{ tag }}">#{{ tag }}</a>
+  </div>  
+  {% endfor %}
+</article>
+{% endblock %}
