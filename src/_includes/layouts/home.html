@@ -10,7 +10,7 @@
   <div class="home-updates">
     <div>
       {% for post in postList | head(-1) %}
-        <a href="{{ pos.url }}"><h2 class="link-header">Latest Blog Post</h2></a>
+        <a href="{{ post.url }}"><h2 class="link-header">Latest Blog Post</h2></a>
         <div class="post-item">
           <a href="{{ post.url }}"><h3>{{ post.data.title }}</h3></a>
           <div class="post-date">{{ post.data.page.date | date }}</div>

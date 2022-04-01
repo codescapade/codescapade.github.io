@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+    <link href="/static/atom-dark.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+	  <link rel='icon' type='image/png' href='/static/favicon.png'>
+    <title>Creating a Sprite Atlas Tool</title>
+  </head>
+  <body>
+    <div class="container">
+      <image class="title-img" src="/static/title.png"/>
+      <div class="navigation">
+  <nav>
+    <ul>
+      
+      <li>
+        <a class="" href="/">
+          <span class="desktop-nav">Home</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#home"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="active" href="/blog/">
+          <span class="desktop-nav">Blog</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#book-open"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="" href="/projects/">
+          <span class="desktop-nav">Projects</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#folder"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="" href="/about/">
+          <span class="desktop-nav">About</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#info"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="javascript:void(0)" onclick="toggleTheme()">
+          <span class="desktop-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+          <span class="mobile-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="divider"></div>
+</div>
+      <main tabindex="-1">
+        
+  <article>
+    <h1>Creating a Sprite Atlas Tool</h1>
+    <p>I create 2d games and a way to optimize draw calls is to put images in a sprite atlas so they can be drawn without
+changing the texture. Texture change means a new draw call. I have been using
+<a href="https://www.codeandweb.com/texturepacker">TexturePacker</a> for years and it is really good, but I wanted to learn how to
+do this myself. The result is <a href="/projects/aeons-atlas">Aeons Atlas</a>.
+<br/>
+<br/></p>
+<h2>Why create a sprite atlas tool</h2>
+<p>I have been using sprite atlases to store the images for my games to make drawing more efficient. There are a lot of good tools out there to generate them like TexturePacker I mentioned above. What I don't like about them is that I always have to open that tool if I add, remove or edit an image. Not that it is a lot of work, but it is another tool on the stack.<br>
+I'm creating a game engine called <a href="https://github.com/codescapade/aeons">Aeons</a> that uses sprite atlases to display images with the built in components and animation system. If other people end up using this engine I don't want to force another tool on them, so I thought this would be a good opportunity to create one myself. I'm using <a href="https://haxe.org">Haxe</a> a lot so I used that to build it and compile it for multiple operating systems.
+<br/>
+<br/></p>
+<h2>Idea and design</h2>
+<p>I wanted to have a tool that would create one or more sprite atlases automatically with minimal configuration. I don't need a user interface to drag sprites around so I decided to have a configuration file per project where you can define your atlases and then use the command line to generate them.<br>
+Exporting a game in Aeons also uses the command line so I can just add a step before that to generate the atlas every time I export a game.</p>
+<p>A config can take one or more folders or a list of image files, a folder to save the file to and some options for packing. There can be multiple configs inside the file if you need to export more than one atlas. The minimal configuration looks like this:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"configs"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"spriteAtlas"</span><span class="token punctuation">,</span><br>      <span class="token property">"saveFolder"</span><span class="token operator">:</span> <span class="token string">"build/assets"</span><span class="token punctuation">,</span><br>      <span class="token property">"folders"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"images"</span><br>      <span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<br/>
+<h2>Packing methods</h2>
+<p>There are two packing methods and some packing options available.</p>
+<h3>Basic packing</h3>
+<p>This sorts the images by name and adds the images next to each other until the max width and then continues on the nex available place below. This method is the fastest but wastes a lot of space.</p>
+<h3>Optimal packing</h3>
+<p>This sorts the images by height from largest to smallest. Then makes the canvas the height of the largest image and places the in the left most available spot. When all the images are placed take the empty space on the right + 1 pixel and try again. Every time this is complete, compare the area of the canvas with the smallest area found so far and keep it if it is smaller. Continue until the canvas is smaller than the widest image. A full explanation of how this works is in the source <a href="https://github.com/codescapade/aeons-atlas/blob/main/source/atlas/Packer.hx">here</a>.<br>
+This is a bit slower but much more space can be saved. I have tried this with about 150 sprites and it takes about 1 second to pack so still pretty fast.</p>
+<h3>Trim and extrude</h3>
+<p>There is a trim option if you want to trim off fully transparent pixels to make the image rectangle smaller. This can save a lot of space.<br>
+There is also an extrude option. This will extrude the edges of the image by a set amount of pixels of the same color. When rendering from an atlas, the renderer sometimes picks some pixels from the next image in the atlas. This can be particularly visible in tilemaps. This option extrudes the image so if this happens it will still show the same kind of pixels.</p>
+<h3>Some examples</h3>
+<p>All images have transparent pixels around them to make it easier to show what happens when using trim.<br>
+<br/>
+<img src="/blog/images/aeons-atlas/basic.png" alt="basic"><br>
+Basic packing, no trim or extrude.<br>
+<br/>
+<img src="/blog/images/aeons-atlas/basic_trimmed.png" alt="basic_trimmed"><br>
+Basic packing, trimmed, no extrude.<br>
+<br/>
+<img src="/blog/images/aeons-atlas/optimal.png" alt="optimal"><br>
+Optimal packing, no trim or extrude.<br>
+<br/>
+<img src="/blog/images/aeons-atlas/optimal_trimmed.png" alt="optimal_trimmed"><br>
+Optimal packing, trimmed, no extrude.<br>
+<br/>
+<img src="/blog/images/aeons-atlas/optimal_trimmed_extruded.png" alt="optimal_trimmed_extruded"><br>
+Optimal packing, trimmed and extruded.
+<br/>
+<br/></p>
+<h2>Image data format</h2>
+<p>The exported atlas comes with a json data file that has the positions and sizes of each image in the atlas. It also has the original size of the image for when you use trim. The rotated option is always false, but is used in other popular sprite atlas tools. I added it to make using the exported files easier to use in other engines.</p>
+<p>This is an example of the output file:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"frames"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"rotated"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>      <span class="token property">"sourceSize"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span><br>        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"filename"</span><span class="token operator">:</span> <span class="token string">"blue_box"</span><span class="token punctuation">,</span><br>      <span class="token property">"spriteSourceSize"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span><br>        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><span class="token punctuation">,</span><br>        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"frame"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span><br>        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><span class="token punctuation">,</span><br>        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"trimmed"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<br/>
+<h2>Conclusion</h2>
+<p>I'm happy how the Aeons Atlas turned out. It does what I need for my goal and I have learned quite a few things. I thought it would be pretty difficult to make a tool like this but I found some good resources on how to do it like <a href="https://www.codeproject.com/Articles/210979/Fast-optimizing-rectangle-packing-algorithm-for-bu">this</a> post on optimizing rectangle packing algorithms.<br>
+This is also the first project where I got Github Actions setup to automatically test and build artifacts so I learned how to do that as well. Overall a good project.</p>
+
+    <a class="tag" href="/tags/gamedev">#gamedev</a><a class="tag" href="/tags/haxe">#haxe</a><a class="tag" href="/tags/tools">#tools</a>
+  </article>
+
+      </main>
+    </div>
+    <script src="/static/theme.js"></script>
+  </body>
+</html>
