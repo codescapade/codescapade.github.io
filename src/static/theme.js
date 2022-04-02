@@ -29,5 +29,10 @@ function setTheme(theme) {
   console.log('test');
 }
 
-let theme = localStorage.getItem('theme') || 'light';
-setTheme(theme);
+window.addEventListener('DOMContentLoaded', () => {
+  const theme = localStorage.getItem('theme') || 'light';
+  setTheme(theme);
+
+  document.body.style.visibility = 'visible';
+  document.body.style.opacity = 1;
+});
