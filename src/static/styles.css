@@ -249,6 +249,10 @@ nav ul li a {
   text-align: center;
 }
 
+.project-description {
+  min-height: 32px;;
+}
+
 .read-more {
   padding-top: 5px;
 }
