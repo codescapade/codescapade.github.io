@@ -6,13 +6,13 @@
 body {
   --header-color: #666;
   --background-color: #eee;
-  --text-color: #111;
+  --text-color: #333;
 }
 
 body.dark-theme {
-  --header-color: #fff;
+  --header-color: #ccc;
   --background-color: #222;
-  --text-color: #eee;
+  --text-color: #bbb;
 }
 
 html {
