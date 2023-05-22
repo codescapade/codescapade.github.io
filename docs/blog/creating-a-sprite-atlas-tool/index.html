@@ -103,6 +103,7 @@
         
   <article>
     <h1>Creating a Sprite Atlas Tool</h1>
+    <div class="post-date-blog">2022-04-01</div>
     <p>I create 2d games and a way to optimize draw calls is to put images in a sprite atlas so they can be drawn without
 changing the texture. Texture change means a new draw call. I have been using
 <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a> for years and it is really good, but I wanted to learn how to
@@ -118,7 +119,17 @@ I'm creating a game engine called <a href="https://github.com/codescapade/aeons"
 <p>I wanted to have a tool that would create one or more sprite atlases automatically with minimal configuration. I don't need a user interface to drag sprites around so I decided to have a configuration file per project where you can define your atlases and then use the command line to generate them.<br>
 Exporting a game in Aeons also uses the command line so I can just add a step before that to generate the atlas every time I export a game.</p>
 <p>A config can take one or more folders or a list of image files, a folder to save the file to and some options for packing. There can be multiple configs inside the file if you need to export more than one atlas. The minimal configuration looks like this:</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"configs"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"spriteAtlas"</span><span class="token punctuation">,</span><br>      <span class="token property">"saveFolder"</span><span class="token operator">:</span> <span class="token string">"build/assets"</span><span class="token punctuation">,</span><br>      <span class="token property">"folders"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>        <span class="token string">"images"</span><br>      <span class="token punctuation">]</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"configs"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"spriteAtlas"</span><span class="token punctuation">,</span>
+      <span class="token property">"saveFolder"</span><span class="token operator">:</span> <span class="token string">"build/assets"</span><span class="token punctuation">,</span>
+      <span class="token property">"folders"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"images"</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 <br/>
 <h2>Packing methods</h2>
 <p>There are two packing methods and some packing options available.</p>
@@ -152,12 +163,38 @@ Optimal packing, trimmed and extruded.
 <h2>Image data format</h2>
 <p>The exported atlas comes with a json data file that has the positions and sizes of each image in the atlas. It also has the original size of the image for when you use trim. The rotated option is always false, but is used in other popular sprite atlas tools. I added it to make using the exported files easier to use in other engines.</p>
 <p>This is an example of the output file:</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span><br>  <span class="token property">"frames"</span><span class="token operator">:</span> <span class="token punctuation">[</span><br>    <span class="token punctuation">{</span><br>      <span class="token property">"rotated"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span><br>      <span class="token property">"sourceSize"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span><br>        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"filename"</span><span class="token operator">:</span> <span class="token string">"blue_box"</span><span class="token punctuation">,</span><br>      <span class="token property">"spriteSourceSize"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span><br>        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><span class="token punctuation">,</span><br>        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"frame"</span><span class="token operator">:</span> <span class="token punctuation">{</span><br>        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span><br>        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><span class="token punctuation">,</span><br>        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span><br>        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span><br>      <span class="token punctuation">}</span><span class="token punctuation">,</span><br>      <span class="token property">"trimmed"</span><span class="token operator">:</span> <span class="token boolean">false</span><br>    <span class="token punctuation">}</span><br>  <span class="token punctuation">]</span><br><span class="token punctuation">}</span></code></pre>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"frames"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"rotated"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token property">"sourceSize"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span>
+        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"filename"</span><span class="token operator">:</span> <span class="token string">"blue_box"</span><span class="token punctuation">,</span>
+      <span class="token property">"spriteSourceSize"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span>
+        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><span class="token punctuation">,</span>
+        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"frame"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"h"</span><span class="token operator">:</span> <span class="token number">46</span><span class="token punctuation">,</span>
+        <span class="token property">"w"</span><span class="token operator">:</span> <span class="token number">48</span><span class="token punctuation">,</span>
+        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"trimmed"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
 <br/>
 <h2>Conclusion</h2>
 <p>I'm happy how the Aeons Atlas turned out. It does what I need for my goal and I have learned quite a few things. I thought it would be pretty difficult to make a tool like this but I found some good resources on how to do it like <a href="https://www.codeproject.com/Articles/210979/Fast-optimizing-rectangle-packing-algorithm-for-bu">this</a> post on optimizing rectangle packing algorithms.<br>
 This is also the first project where I got Github Actions setup to automatically test and build artifacts so I learned how to do that as well. Overall a good project.</p>
 
+    <br>
+    <br>
     <a class="tag" href="/tags/gamedev">#gamedev</a><a class="tag" href="/tags/haxe">#haxe</a><a class="tag" href="/tags/tools">#tools</a>
   </article>
 

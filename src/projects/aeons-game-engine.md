@@ -1,6 +1,6 @@
 ---
 title: Aeons Game Engine
-released: TBD
+released: (archived)
 weight: 5
 cover: /projects/images/aeons-game-engine/cover.png
 description: A cross platform 2D game engine.

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <style>
+      body {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
+    <meta charset="UTF-8"/>
+    <meta name='viewport' content='width=device-width,initial-scale=1.0'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+    <link href="/static/atom-dark.css" rel="stylesheet">
+    <link href="/static/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <title>Lumi engine update</title>
+    <noscript>
+      <style>
+        body {
+          visibility: visible;
+          opacity: 1;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <div class="container">
+      <image class="title-img" src="/static/title.png"/>
+      <div class="navigation">
+  <nav>
+    <ul>
+      
+      <li>
+        <a class="" href="/">
+          <span class="desktop-nav">Home</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#home"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="active" href="/blog/">
+          <span class="desktop-nav">Blog</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#book-open"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="" href="/projects/">
+          <span class="desktop-nav">Projects</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#folder"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a class="" href="/about/">
+          <span class="desktop-nav">About</span>
+          <span class="mobile-nav">
+            <svg class="feather">
+              <use xlink:href="/static/feather-sprite.svg#info"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="javascript:void(0)" onclick="toggleTheme()">
+          <span class="desktop-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+          <span class="mobile-nav">
+            <svg class="feather moon-icon">
+              <use xlink:href="/static/feather-sprite.svg#moon"/>
+            </svg>
+            <svg class="feather sun-icon">
+              <use xlink:href="/static/feather-sprite.svg#sun"/>
+            </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="divider"></div>
+</div>
+      <main tabindex="-1">
+        
+  <article>
+    <h1>Lumi engine update</h1>
+    <div class="post-date-blog">2023-05-22</div>
+    <p>End of last year I started on a new iteration of my the game engine. I decided to build it using TypeScript. I generally make small web games and wanted to less dependencies so WebGL is a good fit. After a few months of working on it I decided to switched back to <a href="https://haxe.org">Haxe</a>, but still compiling to JavaScript. Here are some of the reasons why.
+<br>
+<br></p>
+<h3>The node ecosystem.</h3>
+<p>Most libraries in Node have a lot of dependencies that you have to keep up to date. Even though my game engine has few dependencies itself, the tooling does have a lot of them. TypeScript, the bundler, eslint, etc. I'm not a fan of that you have to update the libraries very often. You can automate some of it, but it is not ideal.
+<br>
+<br></p>
+<h3>Bundlers and TypeScript</h3>
+<p>To use TypeScript you need a compiler that turns it into JavaScript so the browser can run it. After that you want to bundle the JavaScript. There are quite a few bundlers to choose from. I started with <a href="https://vitejs.dev">Vite</a>. It worked okay at the start, but when I wanted to use <a href="https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#decorators">TypeScript 5 decorators</a> that no longer worked. Esbuild does not support those yet and I could no longer compile the library.</p>
+<p>I have also tried <a href="https://parceljs.org">Parcel</a> and <a href="https://rollupjs.org">Rollup</a>, but I needed a two step build process to make it kinda work with source maps. Each bundler had their own issues. TypeScript cause quite a few issues with bundlers still and I could not get it to work to way I wanted it to.
+<br>
+<br></p>
+<h3>Haxe Macros</h3>
+<p>Haxe has a pretty powerful <a href="https://haxe.org/manual/macro.html">macro</a> system. In my previous engine I used macros to generate event constructors and collections of components for my systems. In TypeScript I had to write all those by hand for each new one I created. Writing that code became a bit tedious and I was thinking more about returning to Haxe.
+<br>
+<br></p>
+<h3>Native backends</h3>
+<p>Haxe can compile to different programming languages. JavaScript is the one I'm using now, but there is also C++. In the future I want to add native backends. Maybe using SDL, they are working on 3.0 and that looks promising. I can keep all my engine logic and have to create a native backend if I use Haxe.
+<br>
+<br></p>
+<h3>Conclusion</h3>
+<p>About a month and a half ago I ported my TypeScript engine to Haxe. The languages are similar so it didn't take too much time. I'm far enough along now that I'm working on my first game using this engine. It will be a physics golfing game for mobile and web. Using <a href="https://capacitorjs.com">Capacitor</a> I can create a native app and so far the performance has been good.</p>
+<p>I also renamed the engine to &quot;Lumi&quot;.</p>
+
+    <br>
+    <br>
+    <a class="tag" href="/tags/gamedev">#gamedev</a><a class="tag" href="/tags/engine">#engine</a><a class="tag" href="/tags/lumi">#lumi</a><a class="tag" href="/tags/haxe">#haxe</a>
+  </article>
+
+      </main>
+    </div>
+    <script src="/static/theme.js"></script>
+  </body>
+</html>

@@ -14,7 +14,7 @@
     <link href="/static/atom-dark.css" rel="stylesheet">
     <link href="/static/styles.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/static/favicon.png">
-    <title>Posts with &quot;#haxe&quot;</title>
+    <title>Lumi Game Engine</title>
     <noscript>
       <style>
         body {
@@ -54,7 +54,7 @@
       </li>
       
       <li>
-        <a class="" href="/projects/">
+        <a class="active" href="/projects/">
           <span class="desktop-nav">Projects</span>
           <span class="mobile-nav">
             <svg class="feather">
@@ -102,63 +102,15 @@
       <main tabindex="-1">
         
   <article>
-      <div>
-    <h1>Blog posts tagged with &quot;#haxe&quot;</h1>
-    
-  </div>
-    <div class="blog-list">
-  
-  <div class="post-item">
-    <a href="/blog/lumi-engine-update/"><h3>Lumi engine update</h3></a>
-    <div class="post-date">2023-05-22</div>
-    
-    <div class="excerpt">
-End of last year I started on a new iteration of my the game engine. I decided to build it using TypeScript. I generally make small web games and wanted to less dependencies so WebGL is a good fit. After a few months of working on it I decided to switched back to <a href="https://haxe.org">Haxe</a>, but still compiling to JavaScript. Here are some of the reasons why.
-</div>
-    
-    <a class="read-more" href="/blog/lumi-engine-update/">Read More</a>
-    <div class="post-list-border"></div>
-  </div>
-  
-  <div class="post-item">
-    <a href="/blog/a-platformer-example-for-aeons-engine/"><h3>A platformer example for Aeons Engine</h3></a>
-    <div class="post-date">2022-05-22</div>
-    
-    <div class="excerpt">
-I have been working on my own 2d game engine for a while. About 3 years at this point. I have started over
-multiple times during that time and tried different languages and base frameworks. The latest attempt is called <a href="https://github.com/codescapade/aeons">Aeons</a>.<br>
-The language a chose is <a href="https://haxe.org">Haxe</a> and the framework is called <a href="https://github.com/Kode/Kha">Kha</a>. I think
-this is the most complete attempt yet. I will make a separate blog post about the engine itself at a later time.
-The engine is now complete enough to actually make small games with so I decided to make a litle platformer game with it.<br>
+    <h1>Lumi Game Engine</h1>
+    <h4>Release Date: TBD</h4>
+    <p>Lumi is a 2D game engine I'm working on. I'm using Haxe to write it and it uses WebGL for rendering. I tried to make it flexible so you can decide yourself how to use it. It is a combination of the things I liked from the other game engines I have used over the years.</p>
+<p>I based Lumi on my previous engine Aeons. I'm no longer using Kha as a base framework, so less dependencies but Lumi only has a web target for now.</p>
+<p>Lumi has built-in ECS, but that is optional. You can also only use it with the built-in systems, and add your own logic to components. The Scene class has an <strong>update</strong> and <strong>render</strong> loop that you can use.<br>
+Entities also have an <strong>update</strong> and <strong>render</strong> loop you can use if you don't want to use ECS.</p>
+<p>Components can also have <strong>update</strong> and render loops if you don't want to use systems.</p>
+<p>It is still a work in progress, but I'm working on a game that uses this engine at the moment.</p>
 
-</div>
-    
-    <a class="read-more" href="/blog/a-platformer-example-for-aeons-engine/">Read More</a>
-    <div class="post-list-border"></div>
-  </div>
-  
-  <div class="post-item">
-    <a href="/blog/creating-a-sprite-atlas-tool/"><h3>Creating a Sprite Atlas Tool</h3></a>
-    <div class="post-date">2022-04-01</div>
-    
-    <div class="excerpt">
-I create 2d games and a way to optimize draw calls is to put images in a sprite atlas so they can be drawn without
-changing the texture. Texture change means a new draw call. I have been using
-<a href="https://www.codeandweb.com/texturepacker">TexturePacker</a> for years and it is really good, but I wanted to learn how to
-do this myself. The result is <a href="/projects/aeons-atlas">Aeons Atlas</a>.<br>
-</div>
-    
-    <a class="read-more" href="/blog/creating-a-sprite-atlas-tool/">Read More</a>
-    <div class="post-list-border"></div>
-  </div>
-  
-</div>
-
-    
-    <a href="/tags">#all tags</a>
-    
-    
-    
   </article>
 
       </main>
