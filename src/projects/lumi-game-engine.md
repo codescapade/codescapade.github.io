@@ -14,6 +14,6 @@ I based Lumi on my previous engine Aeons. I'm no longer using Kha as a base fram
 Lumi has built-in ECS, but that is optional. You can also only use it with the built-in systems, and add your own logic to components. The Scene class has an **update** and **render** loop that you can use.  
 Entities also have an **update** and **render** loop you can use if you don't want to use ECS.  
 
-Components can also have **update** and render loops if you don't want to use systems.  
+Components can also have **update** and **render** loops if you don't want to use systems.  
 
 It is still a work in progress, but I'm working on a game that uses this engine at the moment.
