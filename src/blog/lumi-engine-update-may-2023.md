@@ -5,7 +5,7 @@ tags: ['gamedev', 'engine', 'lumi', 'haxe']
 draft: false
 ---
 
-End of last year I started on a new iteration of my the game engine. I decided to build it using TypeScript. I generally make small web games and wanted to less dependencies so WebGL is a good fit. After a few months of working on it I decided to switched back to [Haxe](https://haxe.org), but still compiling to JavaScript. Here are some of the reasons why.
+End of last year I started on a new iteration of my game engine. I decided to build it using TypeScript. I generally make small web games and wanted less dependencies so WebGL is a good fit. After a few months of working on it I decided to switch back to [Haxe](https://haxe.org), but still compiling to JavaScript. Here are some of the reasons why.
 <!-- read-more -->
 <br>
 <br>
@@ -16,19 +16,19 @@ Most libraries in Node have a lot of dependencies that you have to keep up to da
 <br>
 
 ### Bundlers and TypeScript
-To use TypeScript you need a compiler that turns it into JavaScript so the browser can run it. After that you want to bundle the JavaScript. There are quite a few bundlers to choose from. I started with [Vite](https://vitejs.dev). It worked okay at the start, but when I wanted to use [TypeScript 5 decorators](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#decorators) that no longer worked. Esbuild does not support those yet and I could no longer compile the library. 
+To use TypeScript you need a compiler that turns it into JavaScript so the browser can run it. After that you want to bundle the JavaScript. There are quite a few bundlers to choose from. I started with [Vite](https://vitejs.dev). It worked okay at the start, but when I wanted to use [TypeScript 5 decorators](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-0.html#decorators), that no longer worked. Esbuild does not support those yet and I could no longer compile my engine. 
 
-I have also tried [Parcel](https://parceljs.org) and [Rollup](https://rollupjs.org), but I needed a two step build process to make it kinda work with source maps. Each bundler had their own issues. TypeScript cause quite a few issues with bundlers still and I could not get it to work to way I wanted it to.
+I have also tried [Parcel](https://parceljs.org) and [Rollup](https://rollupjs.org), but I needed a two step build process to make it kinda work with source maps. Each bundler had their own issues. TypeScript causes quite a few issues with bundlers still and I could not get it to work to way I wanted it to.
 <br>
 <br>
 
 ### Haxe Macros
-Haxe has a pretty powerful [macro](https://haxe.org/manual/macro.html) system. In my previous engine I used macros to generate event constructors and collections of components for my systems. In TypeScript I had to write all those by hand for each new one I created. Writing that code became a bit tedious and I was thinking more about returning to Haxe.
+Haxe has a pretty powerful [macro](https://haxe.org/manual/macro.html) system. In my previous engine I used macros to generate event constructors and collections of components for my systems. In TypeScript I had to write all those by hand for each new one I created. Writing that code became a bit tedious and I was thinking more about returning to Haxe. I now use even more macros that help me write less code.
 <br>
 <br>
 
 ### Native backends
-Haxe can compile to different programming languages. JavaScript is the one I'm using now, but there is also C++. In the future I want to add native backends. Maybe using SDL, they are working on 3.0 and that looks promising. I can keep all my engine logic and have to create a native backend if I use Haxe.
+Haxe can compile to different programming languages. JavaScript is the one I'm using now, but there is also C++ and many others. In the future I want to add native backends. Maybe using SDL. They are working on 3.0 and that looks promising. I can keep all my engine logic and only have to create a native backend if I use Haxe. When using TypeScript this is not an option.
 <br>
 <br>
 
