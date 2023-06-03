@@ -14,7 +14,7 @@ do this myself. The result is [Aeons Atlas](/projects/aeons-atlas).
 
 ## Why create a sprite atlas tool
 I have been using sprite atlases to store the images for my games to make drawing more efficient. There are a lot of good tools out there to generate them like TexturePacker I mentioned above. What I don't like about them is that I always have to open that tool if I add, remove or edit an image. Not that it is a lot of work, but it is another tool on the stack.  
-I'm creating a game engine called [Aeons](https://github.com/codescapade/aeons) that uses sprite atlases to display images with the built in components and animation system. If other people end up using this engine I don't want to force another tool on them, so I thought this would be a good opportunity to create one myself. I'm using [Haxe](https://haxe.org) a lot so I used that to build it and compile it for multiple operating systems.
+I'm creating a game engine called [Aeons](https://github.com/codescapade/aeons) that uses sprite atlases to display images with the built-in components and animation system. If other people end up using this engine I don't want to force another tool on them, so I thought this would be a good opportunity to create one myself. I'm using [Haxe](https://haxe.org) a lot so I used that to build it and compile it for multiple operating systems.
 <br/>
 <br/>
 
@@ -43,10 +43,10 @@ A config can take one or more folders or a list of image files, a folder to save
 There are two packing methods and some packing options available.
 
 ### Basic packing
-This sorts the images by name and adds the images next to each other until the max width and then continues on the nex available place below. This method is the fastest but wastes a lot of space.
+This sorts the images by name and adds the images next to each other until the max width and then continues on the next available place below. This method is the fastest but wastes a lot of space.
 
 ### Optimal packing
-This sorts the images by height from largest to smallest. Then makes the canvas the height of the largest image and places the in the left most available spot. When all the images are placed take the empty space on the right + 1 pixel and try again. Every time this is complete, compare the area of the canvas with the smallest area found so far and keep it if it is smaller. Continue until the canvas is smaller than the widest image. A full explanation of how this works is in the source [here](https://github.com/codescapade/aeons-atlas/blob/main/source/atlas/Packer.hx).  
+This sorts the images by height from largest to smallest. Then makes the canvas the height of the largest image and place it in the left-most available spot. When all the images are placed take the empty space on the right + 1 pixel and try again. Every time this is complete, compare the area of the canvas with the smallest area found so far and keep it if it is smaller. Continue until the canvas is smaller than the widest image. A full explanation of how this works is in the source [here](https://github.com/codescapade/aeons-atlas/blob/main/source/atlas/Packer.hx).  
 This is a bit slower but much more space can be saved. I have tried this with about 150 sprites and it takes about 1 second to pack so still pretty fast.
 
 ### Trim and extrude
@@ -74,7 +74,7 @@ Optimal packing, trimmed and extruded.
 <br/>
 
 ## Image data format
-The exported atlas comes with a json data file that has the positions and sizes of each image in the atlas. It also has the original size of the image for when you use trim. The rotated option is always false, but is used in other popular sprite atlas tools. I added it to make using the exported files easier to use in other engines.
+The exported atlas comes with a json data file that has the positions and sizes of each image in the atlas. It also has the original size of the image for when you use the trim option. The rotated option is always false but is used in other popular sprite atlas tools. I added it to make using the exported files easier to use in other engines.
 
 This is an example of the output file:
 
@@ -108,5 +108,5 @@ This is an example of the output file:
 <br/>
 
 ## Conclusion
-I'm happy how the Aeons Atlas turned out. It does what I need for my goal and I have learned quite a few things. I thought it would be pretty difficult to make a tool like this but I found some good resources on how to do it like [this](https://www.codeproject.com/Articles/210979/Fast-optimizing-rectangle-packing-algorithm-for-bu) post on optimizing rectangle packing algorithms.  
-This is also the first project where I got Github Actions setup to automatically test and build artifacts so I learned how to do that as well. Overall a good project.
+I'm happy with how the Aeons Atlas turned out. It does what I need for my goal and I have learned quite a few things. I thought it would be pretty difficult to make a tool like this but I found some good resources on how to do it like [this](https://www.codeproject.com/Articles/210979/Fast-optimizing-rectangle-packing-algorithm-for-bu) post on optimizing rectangle packing algorithms.  
+This is also the first project where I got Github Actions set up to automatically test and build artifacts so I learned how to do that as well. Overall a good project.
