@@ -7,7 +7,7 @@ description: A 2D game engine for the web.
 draft: false
 ---
 
-Lumi is a 2D game engine I'm working on. I'm using Haxe to write it and it uses WebGL for rendering. I tried to make it flexible so you can decide yourself how to use it. It is a combination of the things I liked from the other game engines I have used over the years.
+Lumi is a 2D game engine I'm working on. I'm using Haxe to write it and it uses WebGL for rendering. I tried to make it flexible so you can decide how to use it. It is a combination of the things I liked from the other game engines I have used over the years.
 
 I based Lumi on my previous engine Aeons. I'm no longer using Kha as a base framework, so less dependencies but Lumi only has a web target for now.
 

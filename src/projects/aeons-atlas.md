@@ -18,7 +18,7 @@ Some examples of a packed atlas:
 This is a basic packed untrimmed atlas. All source images in this example have transparent pixels around them.  
 <br/>
 ![optimal trimmed](/projects/images/aeons-atlas/optimal_trimmed.png)  
-This is a optimal packed trimmed atlas. Packed in the smallest image with transparent pixels trimmed of where possible.  
+This is an optimally packed trimmed atlas. Packed in the smallest image with transparent pixels trimmed off where possible.  
 
 ### Data file
-This packed image comes with a json file that has the position of each of the source images and their current size and original size before trimming. It is in the same format as some other popular sprite atlas tools so it can be integrated in other engines too.  
+This packed image comes with a JSON file that has the position of each of the source images and their current size and original size before trimming. It is in the same format as some other popular sprite atlas tools so it can be integrated in other engines too.  
