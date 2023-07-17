@@ -2,7 +2,7 @@
 title: Lumi Game Engine
 released: TBD
 weight: 6
-cover: /projects/images/placeholder.png
+cover: /projects/images/lumi/cover.png
 description: A 2D game engine for the web.
 draft: false
 ---
